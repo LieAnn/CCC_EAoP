@@ -1,0 +1,17 @@
+1. virtualenv venv/bin/activate
+2. source venv/bin/activate
+
+mysql이 안열릴때 - https://zetawiki.com/wiki/ERROR_2002_(HY000):_Can't_connect_to_local_MySQL_server_through_socket_'/var/lib/mysql/mysql.sock'
+
+{
+    "name": "ahnJung",
+    "host": "54.180.87.223",
+    "protocol": "sftp",
+    "port": 22,
+    "username": "ahnjung",
+    "password": "jungjong",
+    "remotePath": "/home/ahnjung",
+    "uploadOnSave": true
+}
+
+mysql
