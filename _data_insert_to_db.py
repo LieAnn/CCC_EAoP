@@ -12,7 +12,7 @@ ALTER TABLE posts CHANGE contents contents text CHARACTER SET utf8mb4 COLLATE ut
 db = pymysql.connect(host='localhost', port=3306, user='root',
                      passwd='mysql', db='ccc', charset='utf8')
 
-f = open('bns_total_review.txt')
+f = open('data.txt')
 l = f.readlines()
 
 
