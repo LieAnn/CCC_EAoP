@@ -1,12 +1,14 @@
 <!doctype html>
 <html>
   <head>
-    <title>CCC</title>
+    <title>CCC netmarble</title>
     <style>
 
 .button {
-  background-color: #4CAF50; /* Green */
+ 
   border: none;
+  margin-left: 155px;
+width: 150px;
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -15,19 +17,172 @@
   font-size: 16px;
 }
     </style>
+
+
+<script src="https://d3js.org/d3.v4.js"></script>
+
   </head>
   <body>
-      <div id="content"><p>본 연구는 "XXX게임"의 사용자 게시판에 있는 글들을 이용하였습니다.</p></div>
+      <div id="content"><p>본 연구는 "XXX게임"의 사용자 게시판에 있는 글들을 이용하였습니다.</p>
+        <p>다음은 게시글과 사용자를 분석한 결과입니다.</p>
+        <p>보다 자세한 결과를 보길 원하시면 버튼을 클릭하여주시기 바랍니다.</p>
+      </div>
+
     
+<div style="position: relative; float:left;">
+      <div id="data_post"></div>
     <input class="button"
+    style="background-color: #69b3a2; "
     type="button"
     value="POST"
     onclick="location.href='post_vector'">
+</div>
+
+  <div style="position: relative;">
+    
+    <div id="data_user"></div>
     
     <input class="button"
+    style="background-color: #690000;"
        type="button"
        value="USER"
        onclick="location.href='user_vector'">
+
+      </div>
+
+      
+<script>
+
+
+// set the dimensions and margins of the graph
+var margin = {top: 30, right: 30, bottom: 70, left: 60},
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg = d3.select("#data_post")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// Parse the Data
+data = [
+{Emotion:"anger",Value:5779}, 
+{Emotion:"disgust",Value:16252}, 
+{Emotion:"fear",Value:318},
+{Emotion:"happiness",Value:545}, 
+{Emotion:"sadness",Value:363},
+{Emotion:"surprise",Value:3558}]
+
+// d3.csv("post_data.csv", function(data) {
+  data.forEach(function(d) {
+        d.Emotion = d.Emotion;
+        d.Value = +d.Value;
+    });
+// X axis
+var x = d3.scaleBand()
+  .range([ 0, width ])
+  .domain(data.map(function(d) { return d.Emotion; }))
+  .padding(0.2);
+svg.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x))
+  .selectAll("text")
+    .attr("transform", "translate(-10,0)rotate(-45)")
+    .style("text-anchor", "end");
+
+// Add Y axis
+var y = d3.scaleLinear()
+  .domain([0, 17000])
+  .range([ height, 0]);
+svg.append("g")
+  .call(d3.axisLeft(y));
+
+// Bars
+svg.selectAll("mybar")
+  .data(data)
+  .enter()
+  .append("rect")
+    .attr("x", function(d) { return x(d.Emotion); })
+    .attr("y", function(d) { return y(d.Value); })
+    .attr("width", x.bandwidth())
+    .attr("height", function(d) { return height - y(d.Value); })
+    .attr("fill", "#69b3a2")
+
+// })
+
+</script>
+
+       
+<script>
+
+
+  // set the dimensions and margins of the graph
+  var margin = {top: 30, right: 30, bottom: 70, left: 60},
+      width = 460 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
+  
+  // append the svg object to the body of the page
+  var svg = d3.select("#data_user")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+  
+  // Parse the Data
+  data = [
+{Emotion:"anger",Value:2253}, 
+{Emotion:"disgust",Value:7090}, 
+{Emotion:"fear",Value:154},
+{Emotion:"happiness",Value:224}, 
+{Emotion:"sadness",Value:146},
+{Emotion:"surprise",Value:1223}]
+
+
+  // d3.csv("post_data.csv", function(data) {
+    data.forEach(function(d) {
+          d.Emotion = d.Emotion;
+          d.Value = +d.Value;
+      });
+  // X axis
+  var x = d3.scaleBand()
+    .range([ 0, width ])
+    .domain(data.map(function(d) { return d.Emotion; }))
+    .padding(0.2);
+  svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+    .selectAll("text")
+      .attr("transform", "translate(-10,0)rotate(-45)")
+      .style("text-anchor", "end");
+  
+  // Add Y axis
+  var y = d3.scaleLinear()
+    .domain([0, 8000])
+    .range([ height, 0]);
+  svg.append("g")
+    .call(d3.axisLeft(y));
+  
+  // Bars
+  svg.selectAll("mybar")
+    .data(data)
+    .enter()
+    .append("rect")
+      .attr("x", function(d) { return x(d.Emotion); })
+      .attr("y", function(d) { return y(d.Value); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.Value); })
+      .attr("fill", "#690000")
+  
+  // })
+  
+  </script>
+
 
 </body>
 </html>
