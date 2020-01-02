@@ -18,3 +18,6 @@ EAoP-Visualization
 # 3. Flask 실행
 	$ cd pyflask
 	$ python app.py
+
+![index](./images/index.png)
+![post_vector](./images/post_vector.png)
