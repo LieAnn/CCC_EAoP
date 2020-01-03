@@ -14,8 +14,8 @@ EAoP는 POS tagging을 위해 [Mecab](https://bitbucket.org/eunjeon/mecab-ko-dic
 3. [mecab-ko-dic-msvc 기본 사전](https://github.com/Pusnow/mecab-ko-dic-msvc/releases/tag/mecab-ko-dic-2.1.1-20180720-msvc) 다운로드 & "C:/mecab" 폴더에서 압축 풀기  
 4. 파이썬 및 윈도우 버전에 맞는 [python wheel](https://github.com/Pusnow/mecab-python-msvc/releases/tag/mecab_python-0.996_ko_0.9.2_msvc-2) 다운로드 & site-package 폴더에 옮기기  
 5. cmd 창에서 site-package 폴더로 이동 & pip install 다운로드받은파일명.whl 을 입력하여 설치  
-	$ pip install mecab_python-0.996_ko_0.9.2_msvc-cp35-cp35m-win_amd64.whl  
-  
+`$ pip install mecab_python-0.996_ko_0.9.2_msvc-cp35-cp35m-win_amd64.whl`    
+	
 참조 : <https://cleancode-ws.tistory.com/97>
 
 ## 2. ETRI API
@@ -24,11 +24,11 @@ EAoP는 의존구문분석을 위해 ETRI에서 개발한 [의존구문분석 AP
 
 ETRI API에서 Key 발급을 받았다면 Preprocessor/3-1. make_raw_ETRI_data.py의 ETRI_analyzer의 openApiURL과 accessKey 부분에 본인의 정보를 입력하시면 됩니다.  
 
-'''
+```  
 def ETRI_analyzer(text, analysisCode):  
     openApiURL = "????????"  
     accessKey = "????????"  
-'''
+```  
 
 ## 3. Soynlp Word Extracter
 EAoP는 신조어와 비속어, 기타 단어가 많이 등장하는 인터넷 커뮤니티 게시글을 타겟으로 설정하였습니다.   
@@ -45,9 +45,9 @@ GloVe 연구진은 [C로 구현된 코드](https://github.com/stanfordnlp/GloVe)
 	$ pip install glove_python
 
 ## 5. Data
-5.1 인터넷 커뮤니티 게시글  
-5.2 사용자 사전 : Soynlp Word Extracter를 통해 생성한 단어 이외에도 추가하고자 하는 단어  
-5.3 감정기준단어 사전 : Preprocessor/emotion word.csv를 기본적으로 제공, 사용자가 추가 및 삭제 가능  
+1. 인터넷 커뮤니티 게시글  
+2. 사용자 사전 : Soynlp Word Extracter를 통해 생성한 단어 이외에도 추가하고자 하는 단어  
+3. 감정기준단어 사전 : Preprocessor/emotion word.csv를 기본적으로 제공, 사용자가 추가 및 삭제 가능  
 
 # Run EAoP
 
