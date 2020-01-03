@@ -64,10 +64,11 @@ mecab 사용자 사전 추가 방법은 아래와 같습니다.
 1. Notepad++를 통해 사용자 사전 csv 파일 생성  
 2. 해당 파일을 mecab/user-dic로 이동   
 3. 관리자 권한으로 Poweshell 실행  
-  
-	$ cd C:\mecab
-	$ Set-ExecutionPolicy unrestricted
-	$ .\tools\add-userdic-win.ps1
+```   
+$ cd C:\mecab
+$ Set-ExecutionPolicy unrestricted
+$ .\tools\add-userdic-win.ps1
+```
 
 Mecab의 사전 형식 및 추가 방법은 [여기](https://bitbucket.org/eunjeon/mecab-ko-dic/src/df15a487444d88565ea18f8250330276497cc9b9/final/user-dic/README.md)를 참고하시길 바랍니다. 
 
